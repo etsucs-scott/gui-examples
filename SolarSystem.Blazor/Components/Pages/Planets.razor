@@ -1,0 +1,73 @@
+@page "/planets"
+@rendermode InteractiveServer
+@inject SolarSystemService SolarSystemService
+
+<PageTitle>Planets</PageTitle>
+
+<h1>Planets</h1>
+
+<p>
+    The list and detail panel both come from the shared <code>SolarSystemService</code>.
+    Blazor is responsible only for rendering and selection state.
+</p>
+
+<div class="planet-browser">
+    <section class="planet-list" aria-label="Planet list">
+        @foreach (var planet in planets)
+        {
+            var isSelected = selectedPlanet?.Name == planet.Name;
+
+            <button class="planet-button @(isSelected ? "active" : null)" @onclick="() => SelectPlanet(planet)">
+                <strong>@planet.Name</strong>
+                <span>@planet.PlanetType, planet @planet.OrderFromSun</span>
+            </button>
+        }
+    </section>
+
+    @if (selectedPlanet is not null)
+    {
+        <section class="planet-card">
+            <h2>@selectedPlanet.Name</h2>
+            <p>@selectedPlanet.Description</p>
+
+            <dl class="planet-facts">
+                <div class="planet-fact">
+                    <dt>Order from Sun</dt>
+                    <dd>@selectedPlanet.OrderFromSun</dd>
+                </div>
+                <div class="planet-fact">
+                    <dt>Planet type</dt>
+                    <dd>@selectedPlanet.PlanetType</dd>
+                </div>
+                <div class="planet-fact">
+                    <dt>Diameter</dt>
+                    <dd>@selectedPlanet.DiameterKm.ToString("N0") km</dd>
+                </div>
+                <div class="planet-fact">
+                    <dt>Length of day</dt>
+                    <dd>@selectedPlanet.LengthOfDayHours.ToString("N1") hours</dd>
+                </div>
+                <div class="planet-fact">
+                    <dt>Moons</dt>
+                    <dd>@selectedPlanet.NumberOfMoons</dd>
+                </div>
+            </dl>
+        </section>
+    }
+</div>
+
+@code {
+    private IReadOnlyList<Planet> planets = [];
+    private Planet? selectedPlanet;
+
+    protected override void OnInitialized()
+    {
+        planets = SolarSystemService.GetPlanets();
+        selectedPlanet = planets.FirstOrDefault();
+    }
+
+    private void SelectPlanet(Planet planet)
+    {
+        selectedPlanet = planet;
+    }
+}

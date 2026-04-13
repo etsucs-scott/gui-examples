@@ -36,6 +36,16 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "SolarSystem.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/SolarSystem.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SolarSystem.Core.dll": {}
+        }
       }
     }
   },
@@ -75,11 +85,17 @@
         "microsoft.openapi.2.0.0.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "SolarSystem.Core/1.0.0": {
+      "type": "project",
+      "path": "../SolarSystem.Core/SolarSystem.Core.csproj",
+      "msbuildProject": "../SolarSystem.Core/SolarSystem.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Microsoft.AspNetCore.OpenApi >= 10.0.5"
+      "Microsoft.AspNetCore.OpenApi >= 10.0.5",
+      "SolarSystem.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -107,7 +123,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/SolarSystem.Core.csproj": {
+              "projectPath": "/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/SolarSystem.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

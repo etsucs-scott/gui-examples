@@ -3,24 +3,167 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Person Search</title>
+    <title>Solar System HTMX Demo</title>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 3rem;
+        }
+
+        .intro {
+            max-width: 58rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(220px, 280px) 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .planet-list,
+        .planet-card {
+            background: white;
+            border: 1px solid #dbe3ef;
+            border-radius: 1rem;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        .planet-list {
+            padding: 1rem;
+        }
+
+        .planet-link {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 0.75rem;
+            padding: 0.85rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.75rem;
+            background: #fff;
+            color: inherit;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .planet-link:last-child {
+            margin-bottom: 0;
+        }
+
+        .planet-link:hover {
+            background: #ecfeff;
+            border-color: #0f766e;
+        }
+
+        .planet-card {
+            padding: 1.5rem;
+        }
+
+        .planet-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .planet-fact {
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            padding: 0.9rem 1rem;
+        }
+
+        .planet-fact dt {
+            font-weight: 700;
+        }
+
+        .json-link {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        code {
+            background: #e2e8f0;
+            border-radius: 0.3rem;
+            padding: 0.1rem 0.35rem;
+        }
+
+        @media (max-width: 800px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Search for a Person</h1>
+    <main>
+        <section class="intro">
+            <h1>Solar System HTMX Demo</h1>
+            <p>
+                This page is plain HTML plus HTMX. The browser asks the API for an HTML fragment and swaps it into the details panel.
+                The same app also exposes JSON endpoints for the planet data.
+            </p>
+        </section>
 
-    <form
-        hx-get="http://localhost:5298/person"
-        hx-target="#result"
-        hx-trigger="submit">
-        
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" />
+        <div class="layout">
+            <section class="planet-list">
+                <h2>Planets</h2>
 
-        <button type="submit">Search</button>
-    </form>
+                <button class="planet-link" hx-get="/planets/Mercury/fragment" hx-target="#planet-details" hx-swap="innerHTML">Mercury</button>
+                <button class="planet-link" hx-get="/planets/Venus/fragment" hx-target="#planet-details" hx-swap="innerHTML">Venus</button>
+                <button class="planet-link" hx-get="/planets/Earth/fragment" hx-target="#planet-details" hx-swap="innerHTML">Earth</button>
+                <button class="planet-link" hx-get="/planets/Mars/fragment" hx-target="#planet-details" hx-swap="innerHTML">Mars</button>
+                <button class="planet-link" hx-get="/planets/Jupiter/fragment" hx-target="#planet-details" hx-swap="innerHTML">Jupiter</button>
+                <button class="planet-link" hx-get="/planets/Saturn/fragment" hx-target="#planet-details" hx-swap="innerHTML">Saturn</button>
+                <button class="planet-link" hx-get="/planets/Uranus/fragment" hx-target="#planet-details" hx-swap="innerHTML">Uranus</button>
+                <button class="planet-link" hx-get="/planets/Neptune/fragment" hx-target="#planet-details" hx-swap="innerHTML">Neptune</button>
+            </section>
 
-    <h2>Result</h2>
-    <pre id="result"></pre>
+            <section id="planet-details">
+                <section class="planet-card">
+                    <h2>Earth</h2>
+                    <p>Click another planet to fetch a new fragment from the server.</p>
+                    <p>
+                        You can also compare the fragment approach with the JSON endpoint:
+                        <a class="json-link" href="/api/planets/Earth" target="_blank">/api/planets/Earth</a>
+                    </p>
+
+                    <dl class="planet-facts">
+                        <div class="planet-fact">
+                            <dt>Order from Sun</dt>
+                            <dd>3</dd>
+                        </div>
+                        <div class="planet-fact">
+                            <dt>Planet type</dt>
+                            <dd>Rocky</dd>
+                        </div>
+                        <div class="planet-fact">
+                            <dt>Diameter</dt>
+                            <dd>12,742 km</dd>
+                        </div>
+                        <div class="planet-fact">
+                            <dt>Length of day</dt>
+                            <dd>24.0 hours</dd>
+                        </div>
+                        <div class="planet-fact">
+                            <dt>Moons</dt>
+                            <dd>1</dd>
+                        </div>
+                    </dl>
+                </section>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

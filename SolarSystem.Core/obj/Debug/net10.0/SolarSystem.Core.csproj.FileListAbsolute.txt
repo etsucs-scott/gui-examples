@@ -1,0 +1,11 @@
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/bin/Debug/net10.0/SolarSystem.Core.deps.json
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/bin/Debug/net10.0/SolarSystem.Core.dll
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/bin/Debug/net10.0/SolarSystem.Core.pdb
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/SolarSystem.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/SolarSystem.Core.AssemblyInfoInputs.cache
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/SolarSystem.Core.AssemblyInfo.cs
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/SolarSystem.Core.csproj.CoreCompileInputs.cache
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/SolarSystem.Core.dll
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/refint/SolarSystem.Core.dll
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/SolarSystem.Core.pdb
+/home/chandler/src/csci-1260/example-code/gui-examples/SolarSystem.Core/obj/Debug/net10.0/ref/SolarSystem.Core.dll
