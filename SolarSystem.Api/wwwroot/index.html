@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person Search</title>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body>
+    <h1>Search for a Person</h1>
+
+    <form
+        hx-get="http://localhost:5298/person"
+        hx-target="#result"
+        hx-trigger="submit">
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Result</h2>
+    <pre id="result"></pre>
+</body>
+</html>
